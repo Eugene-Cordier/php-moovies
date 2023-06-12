@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Database\MyPdo;
@@ -40,7 +41,8 @@ class Image
     }
     private string $jpeg;
 
-    public static function findbyId($id): image{
+    public static function findbyId($id): image
+    {
         $stmt2 = MyPDO::getInstance()->prepare(
             <<<'SQL'
         SELECT *
