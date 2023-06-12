@@ -19,10 +19,10 @@ foreach ($tab as $elt) {
         $cover="img/defaultcover.png";
     }
     $webPage->appendContent(<<<HTML
-        <div class="film">
+        <div class="movie">
             <a href="movies.php?moviesId={$elt->getId()}">
                 <div class="poster"><img src="$cover"></div>
-                <div class="titre">{$elt->getTitle()}</div>
+                <div class="title">{$elt->getTitle()}</div>
             </a>
         </div>
         HTML);
