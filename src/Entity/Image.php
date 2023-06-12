@@ -44,7 +44,7 @@ class Image
         $stmt2 = MyPDO::getInstance()->prepare(
             <<<'SQL'
         SELECT *
-        FROM Image
+        FROM image
         WHERE id= :var
         ORDER BY title
         SQL
