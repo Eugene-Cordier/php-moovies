@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use Database\MyPdo;
+
 class Image
 {
     private string $id;
@@ -37,4 +39,20 @@ class Image
         $this->jpeg = $jpeg;
     }
     private string $jpeg;
+
+    public static function findbyId($id): image{
+        $stmt2 = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+        SELECT *
+        FROM Image
+        WHERE id= :var
+        ORDER BY title
+        SQL
+        );
+        $stmt2->setFetchMode(PDO::FETCH_CLASS, Image::class);
+        $stmt2->execute([":var"=> $id]);
+        return $stmt2->fetch();
+    }
+
+
 }
