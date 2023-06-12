@@ -11,11 +11,10 @@ class Movie_collection
 {
     public static function findAllMovie(): array
     {
-        //    MyPDO::setConfiguration('mysql:host=mysql;dbname=cutron01_music;charset=utf8', 'web', 'web');
         $stmt2 = MyPDO::getInstance()->prepare(
             <<<'SQL'
         SELECT *
-        FROM Movie
+        FROM movie
         ORDER BY title
         SQL
         );
