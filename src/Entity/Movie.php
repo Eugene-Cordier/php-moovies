@@ -150,7 +150,7 @@ class Movie
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<SQL
-        SELECT id, title
+        SELECT *
         FROM movie
         where id=:id
         SQL
