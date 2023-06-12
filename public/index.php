@@ -7,7 +7,9 @@ use Html\WebPage;
 $tab= Movie_collection::findAllMovie();
 $webPage= new WebPage();
 $webPage->setTitle('Films');
+$webPage->appendCssurl('css/style.css');
 $webPage->appendContent(<<<HTML
+    <header>Films</header>
     <div class="content">
 HTML);
 
