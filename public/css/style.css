@@ -1,0 +1,35 @@
+html{
+    height: 100%;
+}
+header {
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+.content{
+    display: flex;
+    overflow-y: auto;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+footer{
+    display : flex;
+    justify-content: center;
+    font-size: large;
+    color: red;
+}
+.movie{
+    display: flex;
+    max-width: 240px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    background-image: url("../img/imagedefond.jpg");
+}
+img {
+    border-radius: 20%;
+    box-shadow: 10px 5px 5px red;
+}
