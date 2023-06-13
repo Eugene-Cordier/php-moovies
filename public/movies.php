@@ -21,7 +21,7 @@ $webPage->appendContent(<<<HTML
     </form>
     </div>
     <div class="movie">
-        <img class="imgmovie" src=$cover>
+        <img alt="imagemovie" class="imgmovie" src=$cover>
         <div class="infomovie">
             <div class="titledate">
                 <p class="title"> {$movie->getTitle()} </p>
@@ -45,7 +45,7 @@ foreach ($CastList as $cast) {
     $webPage->appendContent(<<<HTML
     <a href="actor.php?ActorId={$actor->getId()}">
     <div class="actor">
-        <img src="image.php?ImageId=$actorCover&Type=People">
+        <img alt="imageactor" src="image.php?ImageId=$actorCover&Type=People">
         <div class="actorinfo">
             <p>$actorRole</p>
             <p>$actorName</p>

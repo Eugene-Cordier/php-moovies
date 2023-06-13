@@ -18,7 +18,7 @@ foreach ($tab as $elt) {
     $webPage->appendContent(<<<HTML
         <div class="movie">
             <a href="movies.php?moviesId={$elt->getId()}">
-                <div class="poster"><img src="$cover"></div>
+                <div class="poster"><img alt="posterfilm" src="$cover"></div>
                 <div class="title">{$elt->getTitle()}</div>
             </a>
         </div>
