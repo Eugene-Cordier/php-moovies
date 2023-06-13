@@ -110,22 +110,22 @@ class People
     {
         $this->biography = $biography;
     }
-    private string $placeofbirth;
+    private string $placeOfBirth;
 
     /**
      * @return string
      */
-    public function getPlaceofbirth(): string
+    public function getPlaceOfBirth(): string
     {
-        return $this->placeofbirth;
+        return $this->placeOfBirth;
     }
 
     /**
      * @param string $placeofbirth
      */
-    public function setPlaceofbirth(string $placeofbirth): void
+    public function setPlaceOfBirth(string $placeOfBirth): void
     {
-        $this->placeofbirth = $placeofbirth;
+        $this->placeOfBirth = $placeOfBirth;
     }
 
     public static function findById($Id): people
