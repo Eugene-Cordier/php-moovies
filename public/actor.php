@@ -14,18 +14,22 @@ $webPage= new WebPage($actor->getName());
 $webPage->appendCssurl("css/style3.css");
 $webPage->appendContent("<header> Films-{$actor->getName()}</header>");
 $cover="image.php?ImageId={$actor->getAvatarId()}&Type=People";
+if(($death=$actor->getDeathday())==null) {
+    $death='Alive';
+}
 $webPage->appendContent(<<<HTML
 <div class="content">
     <div class="actor">
-        <img class="imgmovie" src=$cover>
+        <img class="imgactor" src=$cover>
         <div class="infoactor">
             <p>{$actor->getName()}</p>
             <p>{$actor->getPlaceOfBirth()}</p>
             <div class="datebirthdead">
-                <p class="birthday"> {$actor->getbirthday()} </p>
-                <P class="deathday">{$actor->getDeathday()}</P>
+                <p class="birthday"> {$actor->getbirthday()}</p>
+                <p>&nbsp-&nbsp</p>
+                <P class="deathday">$death</P>
             </div>
-            <p class="biography"> {$actor->getBiography()}</p>
+            <p class="biography">{$actor->getBiography()}</p>
         </div>
     </div>
 
@@ -39,9 +43,9 @@ foreach($movieList as $movie) {
     $cast=Cast::getCast($movie->getId(), $actorId);
     $role=$cast->getRole();
     $webPage->appendContent(<<<HTML
-    <a href="movies.php?moviesId={$movie->getId()}"
+    <a href="movies.php?moviesId={$movie->getId()}">
     <div class="movie">
-        <img src="$poster">
+        <img class="imgmovie" src="$poster">
         <div class="infomovie">
             <div class="titledate">
                 <p class="title">$title</p>
@@ -51,7 +55,6 @@ foreach($movieList as $movie) {
         </div>
     </div>
     </a>
-
 HTML);
 }
 
