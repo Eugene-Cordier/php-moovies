@@ -28,6 +28,7 @@ foreach ($tab as $elt) {
         HTML);
 }
 $webPage->appendContent(<<<HTML
+        </div>
         <footer class='footer'>Derniere modification : {$webPage->getLastModification()}</footer>
     HTML);
 echo $webPage->toHtml();
