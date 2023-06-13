@@ -95,3 +95,11 @@ a:visited {
     text-decoration: none;
     color: white;
 }
+
+.form{
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+input{
+    background-color: red;
+}

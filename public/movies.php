@@ -15,6 +15,11 @@ $webPage->appendContent("<header> Films-{$movie->getTitle()}</header>");
 $cover="image.php?ImageId={$movie->getPosterId()}";
 $webPage->appendContent(<<<HTML
 <div class="content">
+    <div class="form">
+    <form action="index.php" method="post">
+    <input type="submit" name="returnIndex" value="Retour page d'acceuil">
+    </form>
+    </div>
     <div class="movie">
         <img class="imgmovie" src=$cover>
         <div class="infomovie">
