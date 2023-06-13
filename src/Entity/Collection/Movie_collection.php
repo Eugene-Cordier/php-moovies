@@ -22,4 +22,19 @@ class Movie_collection
         $stmt2->execute();
         return $stmt2->fetchAll();
     }
+    public static function findMoviesByPeopleId(int $id): array
+    {
+        $stmt2 = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+        SELECT m.id,posterId,originalLanguage,originalTitle,overview,releaseDate,runtime,tagline,title 
+        FROM movie m,cast c
+        WHERE m.id=c.movieId
+        AND c.peopleId=:id
+        ORDER BY title
+        SQL
+        );
+        $stmt2->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        $stmt2->execute([':id'=>$id]);
+        return $stmt2->fetchAll();
+    }
 }

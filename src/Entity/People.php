@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class People
@@ -110,22 +111,22 @@ class People
     {
         $this->biography = $biography;
     }
-    private string $placeofbirth;
+    private string $placeOfBirth;
 
     /**
      * @return string
      */
-    public function getPlaceofbirth(): string
+    public function getPlaceOfBirth(): string
     {
-        return $this->placeofbirth;
+        return $this->placeOfBirth;
     }
 
     /**
      * @param string $placeofbirth
      */
-    public function setPlaceofbirth(string $placeofbirth): void
+    public function setPlaceOfBirth(string $placeOfBirth): void
     {
-        $this->placeofbirth = $placeofbirth;
+        $this->placeOfBirth = $placeOfBirth;
     }
 
     public static function findById($Id): people
@@ -140,6 +141,9 @@ class People
         );
         $stmt2->setFetchMode(PDO::FETCH_CLASS, People::class);
         $stmt2->execute([':Id'=>$Id]);
-        return $stmt2->fetch();
+        if(!($people = $stmt2->fetch())) {
+            throw new EntityNotFoundException("L'id ne correspond a aucun acteur");
+        }
+        return $people;
     }
 }

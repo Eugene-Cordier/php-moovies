@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class Cast
@@ -106,5 +107,21 @@ class Cast
         $stmt2->setFetchMode(PDO::FETCH_CLASS, Cast::class);
         $stmt2->execute([':movieId'=>$movieId]);
         return $stmt2->fetchAll();
+    }
+    public static function getCast($movieId, $peopleId): Cast
+    {
+        $stmt2 = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+        SELECT *
+        FROM cast
+        WHERE  movieId= :movieId AND peopleId= :peopleId
+        SQL
+        );
+        $stmt2->setFetchMode(PDO::FETCH_CLASS, Cast::class);
+        $stmt2->execute([':movieId'=>$movieId,':peopleId'=>$peopleId]);
+        if(!($cast = $stmt2->fetch())) {
+            throw new EntityNotFoundException("Les deux ids ne correspondent a aucun cast ");
+        }
+        return $cast;
     }
 }

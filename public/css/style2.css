@@ -87,4 +87,11 @@ body{
     border-radius: 20%;
     box-shadow: 5px 5px 10px red;
 }
-
+a:link {
+    text-decoration: none;
+    color: white;
+}
+a:visited {
+    text-decoration: none;
+    color: white;
+}

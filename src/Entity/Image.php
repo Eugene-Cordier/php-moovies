@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class Image
@@ -54,7 +55,10 @@ class Image
         );
         $stmt2->setFetchMode(PDO::FETCH_CLASS, Image::class);
         $stmt2->execute([":var"=> $id]);
-        return $stmt2->fetch();
+        if(!($image = $stmt2->fetch())) {
+            throw new EntityNotFoundException("L'id ne correspond a aucune Image");
+        }
+        return $image;
     }
 
 

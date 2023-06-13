@@ -38,6 +38,7 @@ foreach ($CastList as $cast) {
     $actorCover=$actor->getAvatarId();
     $actorRole=$cast->getRole();
     $webPage->appendContent(<<<HTML
+    <a href="actor.php?ActorId={$actor->getId()}">
     <div class="actor">
         <img src="image.php?ImageId=$actorCover&Type=People">
         <div class="actorinfo">
@@ -45,6 +46,7 @@ foreach ($CastList as $cast) {
             <p>$actorName</p>
         </div>
     </div>
+    </a>
 HTML);
 }
 $webPage->appendContent(<<<HTML
