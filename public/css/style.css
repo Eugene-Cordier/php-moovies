@@ -31,7 +31,7 @@ body{
 }
 img {
     border-radius: 20%;
-    box-shadow: 10px 5px 5px red;
+    box-shadow: 10px 5px 10px red;
 }
 a:link {
     text-decoration: none;
