@@ -14,7 +14,7 @@ $webPage->appendContent(<<<HTML
 HTML);
 
 foreach ($tab as $elt) {
-    $cover="image.php?ImageId={$elt->getPosterId()}";
+    $cover="image.php?ImageId={$elt->getPosterId()}&Type=Movie";
     $webPage->appendContent(<<<HTML
         <div class="movie">
             <a href="movies.php?moviesId={$elt->getId()}">
