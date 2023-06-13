@@ -11,9 +11,9 @@ use PDO;
 
 class Movie
 {
-    private int $id;
+    private ?int $id;
     private string $title;
-    private int $posterId;
+    private ?int $posterId;
     private string $originalLanguage;
     private string $originalTitle;
     private string $overview;
@@ -21,16 +21,16 @@ class Movie
     private int $runtime;
     private string $tagline;
     /**
- * @return int
+ * @return ?int
  */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
     /**
- * @param int $id
+ * @param ?int $id
  */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -162,4 +162,54 @@ class Movie
         }
         return $movie;
     }
+    public function delete(): Movie
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<SQL
+        DELETE FROM movie
+        WHERE id=:id
+        SQL
+        );
+        $stmt->execute([':id'=>$this->id]);
+        $this->id=null;
+        return $this;
+    }
+    protected function update(): Movie
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<SQL
+        UPDATE movie
+        SET originalLanguage=:originalLanguage,
+            originalTitle=:originalTitle,
+            overview=:overview,
+            releaseDate=:releaseDate,
+            runtime=:runtime,
+            tagline=:tagline,
+            title=:title
+        WHERE id=:id
+        SQL
+        );
+        $stmt->execute([':originalLanguage'=>$this->getOriginalLanguage(),':originalTitle'=>$this->getOriginalTitle(),':overview'=>$this->getOverview(),':releaseDate'=>$this->getReleaseDate(),
+        ':runtime'=>$this->getRuntime(),':tagline'=>$this->getTagline(),':title'=>$this->getTitle(),':id'=>$this->getId()]);
+        return $this;
+    }
+    private function __construct()
+    {
+    }
+    public static function create(string $originalLanguage, string $originalTitle, string $overview, string $releaseDate, int $runtime, string $tagline, string $title, ?int $id=null, ?int $posterId=null): Movie
+    {
+        $movie= new Movie();
+        $movie->setOriginalLanguage($originalLanguage);
+        $movie->setOriginalTitle($originalTitle);
+        $movie->setOverview($overview);
+        $movie->setReleaseDate($releaseDate);
+        $movie->setRuntime($runtime);
+        $movie->setTagline($tagline);
+        $movie->setTitle($title);
+        $movie->setId($id);
+        $movie->setPosterId($posterId);
+        return $movie;
+    }
+
+
 }
