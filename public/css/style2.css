@@ -13,7 +13,7 @@ header {
 }
 .movie{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-right: 15px;
     margin-left: 15px;
 }
@@ -102,4 +102,9 @@ a:visited {
 }
 input{
     background-color: red;
+}
+@media screen and (min-width: 700px){
+    .movie{
+    flex-direction:row;
+}
 }
