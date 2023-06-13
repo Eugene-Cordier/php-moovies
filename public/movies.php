@@ -10,20 +10,21 @@ use Html\WebPage;
 $movieId=(int)$_GET["moviesId"];
 $movie=Movie::findByid($movieId);
 $webPage= new WebPage($movie->getTitle());
+$webPage->appendCssurl("css/style2.css");
 $webPage->appendContent("<header> Films-{$movie->getTitle()}</header>");
 $cover="image.php?ImageId={$movie->getPosterId()}";
 $webPage->appendContent(<<<HTML
 <div class="content">
     <div class="movie">
-        <img src=$cover>
+        <img class="imgmovie" src=$cover>
         <div class="infomovie">
-            <div class="title&date">
+            <div class="titledate">
                 <p class="title"> {$movie->getTitle()} </p>
                 <P class="date">{$movie->getReleaseDate()}</P>
             </div>
             <p class="originaltitle"> {$movie->getOriginalTitle()}</p>
             <p> {$movie->getTagline()}</p>
-            <p> {$movie->getOverview()}</p>
+            <p class="overview"> {$movie->getOverview()}</p>
         </div>
     </div>
 
