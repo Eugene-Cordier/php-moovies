@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class People
@@ -140,6 +141,9 @@ class People
         );
         $stmt2->setFetchMode(PDO::FETCH_CLASS, People::class);
         $stmt2->execute([':Id'=>$Id]);
-        return $stmt2->fetch();
+        if(!($people = $stmt2->fetch())) {
+            throw new EntityNotFoundException("L'id ne correspond a aucun acteur");
+        }
+        return $people;
     }
 }
