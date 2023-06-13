@@ -25,7 +25,7 @@ $webPage->appendContent(<<<HTML
     </form>
     </div>
     <div class="actor">
-        <img class="imgactor" src=$cover>
+        <img alt="imgactor" class="imgactor" src=$cover>
         <div class="infoactor">
             <p>{$actor->getName()}</p>
             <p>{$actor->getPlaceOfBirth()}</p>
@@ -50,7 +50,7 @@ foreach($movieList as $movie) {
     $webPage->appendContent(<<<HTML
     <a href="movies.php?moviesId={$movie->getId()}">
     <div class="movie">
-        <img class="imgmovie" src="$poster">
+        <img alt="imgmovie" class="imgmovie" src="$poster">
         <div class="infomovie">
             <div class="titledate">
                 <p class="title">$title</p>
