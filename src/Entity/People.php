@@ -1,16 +1,37 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Entity;
 
+use Database\MyPdo;
+use PDO;
+
 class People
 {
-    private int $avatarId;
+    private int $id;
 
     /**
      * @return int
      */
-    public function getAvatarId(): int
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+    private ?int $avatarId;
+
+    /**
+     * @return int
+     */
+    public function getAvatarId(): ?int
     {
         return $this->avatarId;
     }
@@ -22,11 +43,11 @@ class People
     {
         $this->avatarId = $avatarId;
     }
-    private string $birthday;
+    private ?string $birthday;
     /**
      * @return int
      */
-    public function getbirthday(): string
+    public function getbirthday(): ?string
     {
         return $this->birthday;
     }
@@ -38,12 +59,12 @@ class People
     {
         $this->avatarId = $birthday;
     }
-    private string $deathday;
+    private ?string $deathday;
 
     /**
      * @return string
      */
-    public function getDeathday(): string
+    public function getDeathday(): ?string
     {
         return $this->deathday;
     }
@@ -105,5 +126,20 @@ class People
     public function setPlaceofbirth(string $placeofbirth): void
     {
         $this->placeofbirth = $placeofbirth;
+    }
+
+    public static function findById($Id): people
+    {
+        $stmt2 = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+        SELECT *
+        FROM people 
+        WHERE  id= :Id
+        ORDER BY name
+        SQL
+        );
+        $stmt2->setFetchMode(PDO::FETCH_CLASS, People::class);
+        $stmt2->execute([':Id'=>$Id]);
+        return $stmt2->fetch();
     }
 }
