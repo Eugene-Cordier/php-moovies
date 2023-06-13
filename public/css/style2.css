@@ -1,0 +1,90 @@
+html{
+    height: 100%;
+}
+header {
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    color:red;
+}
+.content{
+    overflow-y: auto;
+}
+.movie{
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+footer{
+    display : flex;
+    justify-content: center;
+    font-size: large;
+    color:white;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    background-image: url("../img/imagedefond.jpg");
+}
+
+.titledate{
+    display: flex;
+    flex-direction: row;
+}
+
+.infomovie{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 15px;
+    color:white;
+}
+
+.originaltitle{
+    display: flex;
+    align-self: end;
+}
+.overview{
+    display: flex;
+    flex-grow: 1;
+}
+
+.date{
+    display: flex;
+    align-self: end;
+}
+.title{
+    display: flex;
+    flex-grow: 1;
+    color:white;
+}
+
+.actor{
+    display: flex;
+    margin-left: 15px;
+    margin-top: 15px;
+    border: 1px solid white;
+
+}
+.actorinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.actorinfo>p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+}
+
+.imgmovie {
+    border-radius: 20%;
+    box-shadow: 5px 5px 10px red;
+}
+
