@@ -51,14 +51,14 @@ class Movie
     /**
  * @return int
  */
-    public function getPosterId(): int
+    public function getPosterId(): ?int
     {
         return $this->posterId;
     }
     /**
  * @param int $posterId
  */
-    public function setPosterId(int $posterId): void
+    public function setPosterId(?int $posterId): void
     {
         $this->posterId = $posterId;
     }
@@ -185,12 +185,13 @@ class Movie
             releaseDate=:releaseDate,
             runtime=:runtime,
             tagline=:tagline,
-            title=:title
+            title=:title,
+            posterId=:posterId
         WHERE id=:id
         SQL
         );
         $stmt->execute([':originalLanguage'=>$this->getOriginalLanguage(),':originalTitle'=>$this->getOriginalTitle(),':overview'=>$this->getOverview(),':releaseDate'=>$this->getReleaseDate(),
-        ':runtime'=>$this->getRuntime(),':tagline'=>$this->getTagline(),':title'=>$this->getTitle(),':id'=>$this->getId()]);
+        ':runtime'=>$this->getRuntime(),':tagline'=>$this->getTagline(),':title'=>$this->getTitle(),':posterId'=>$this->getPosterId(),':id'=>$this->getId()]);
         return $this;
     }
     private function __construct()
@@ -210,6 +211,37 @@ class Movie
         $movie->setPosterId($posterId);
         return $movie;
     }
-
-
+    protected function insert()
+    {
+        if ($this->getPosterId()==null) {
+            $stmt = MyPDO::getInstance()->prepare(
+                <<<SQL
+        INSERT INTO movie (originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title)
+        VALUES (:originalLanguage, :originalTitle, :overview, :releaseDate, :runtime, :tagline, :title)
+        SQL
+            );
+            $stmt->execute([':originalLanguage'=>$this->getOriginalLanguage(),':originalTitle'=>$this->getOriginalTitle(),':overview'=>$this->getOverview(),':releaseDate'=>$this->getReleaseDate(),
+                ':runtime'=>$this->getRuntime(),':tagline'=>$this->getTagline(),':title'=>$this->getTitle()]);
+        } else {
+            $stmt = MyPDO::getInstance()->prepare(
+                <<<SQL
+        INSERT INTO movie (originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title, posterId)
+        VALUES (:originalLanguage, :originalTitle, :overview, :releaseDate, :runtime, :tagline, :title, :posterId)
+        SQL
+            );
+            $stmt->execute([':originalLanguage' => $this->getOriginalLanguage(), ':originalTitle' => $this->getOriginalTitle(), ':overview' => $this->getOverview(), ':releaseDate' => $this->getReleaseDate(),
+                ':runtime' => $this->getRuntime(), ':tagline' => $this->getTagline(), ':title' => $this->getTitle(), 'posterId' => $this->getPosterId()]);
+        }
+        $this->id=(int)MyPdo::getInstance()->lastInsertId();
+        return $this;
+    }
+    public function save()
+    {
+        if ($this->id==null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
 }
