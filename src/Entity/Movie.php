@@ -166,6 +166,10 @@ class Movie
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<SQL
+        DELETE FROM movie_genre
+        WHERE movieId=:id;
+        DELETE FROM cast
+        WHERE movieId=:id;
         DELETE FROM movie
         WHERE id=:id
         SQL
