@@ -43,10 +43,15 @@ a:visited {
 }
 
 .menu{
-    align-self: center;
     margin-bottom: 15px;
     margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 input{
+    background-color: red;
+}
+button{
     background-color: red;
 }

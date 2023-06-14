@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Entity\Collection;
 
 use Database\MyPdo;
+use Entity\Genre;
 use Entity\Movie;
 use PDO;
 
@@ -31,6 +32,23 @@ class Movie_collection
         WHERE m.id=c.movieId
         AND c.peopleId=:id
         ORDER BY title
+        SQL
+        );
+        $stmt2->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        $stmt2->execute([':id'=>$id]);
+        return $stmt2->fetchAll();
+    }
+    public static function findMoviesByGenreid(int $id): array
+    {
+        $stmt2 = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+        SELECT *
+        FROM movie 
+        WHERE id IN (SELECT movieId
+                     FROM movie_genre
+                     WHERE genreId=(SELECT id
+                                    from genre
+                                    where id=:id))
         SQL
         );
         $stmt2->setFetchMode(PDO::FETCH_CLASS, Movie::class);

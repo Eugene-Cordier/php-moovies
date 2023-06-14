@@ -1,7 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Entity;
+
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
 
 class Genre
 {
@@ -40,4 +45,20 @@ class Genre
         $this->name = $name;
     }
 
+    public static function findById(int $id): Genre
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<SQL
+        SELECT *
+        FROM genre
+        where id=:id
+        SQL
+        );
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Genre::class);
+        $stmt->execute([':id'=>$id]);
+        if(!($movie = $stmt->fetch())) {
+            throw new EntityNotFoundException("L'id ne correspond a aucun genre");
+        }
+        return $movie;
+    }
 }
