@@ -10,7 +10,10 @@ $webPage->setTitle('Films');
 $webPage->appendCssurl('css/style.css');
 $webPage->appendContent(<<<HTML
     <header>Films</header>
-    <div class="content">
+    <div class="menu">
+    <a href="admin/movie-form.php">New movie</a>
+    </div>
+    <div class="content">  
 HTML);
 
 foreach ($tab as $elt) {

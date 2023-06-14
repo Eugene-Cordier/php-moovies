@@ -12,7 +12,7 @@ $movie=Movie::findByid($movieId);
 $webPage= new WebPage($movie->getTitle());
 $webPage->appendCssurl("css/style2.css");
 $webPage->appendContent("<header> Films-{$movie->getTitle()}</header>");
-$cover="image.php?ImageId={$movie->getPosterId()}";
+$cover="image.php?ImageId={$movie->getPosterId()}&Type=Movie";
 $webPage->appendContent(<<<HTML
 <div class="content">
     <div class="form">
