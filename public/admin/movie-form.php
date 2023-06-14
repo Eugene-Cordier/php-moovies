@@ -7,6 +7,7 @@ use Entity\Movie;
 use Entity\Exception\EntityNotFoundException;
 use Exception\ParameterException;
 use Html\Form\MovieForm;
+use Html\WebPage;
 
 try {
     if (!isset($_GET['moviesId'])) {
@@ -18,7 +19,17 @@ try {
         $movie=Movie::findById((int)$_GET['moviesId']);
     }
     $form= new MovieForm($movie);
-    echo $form->getHtmlForm('movie-save.php');
+    $webPage=new WebPage();
+    $webPage->appendCssurl("../css/style4.css");
+    $webPage->appendContent(<<<HTML
+    <header>Modification & Création de Films</header>
+     <div class="content">
+    HTML);
+    $webPage->appendContent($form->getHtmlForm('movie-save.php'));
+    $webPage->appendContent(<<<HTML
+    </div>
+    HTML);
+    echo $webPage->toHtml();
 } catch (ParameterException) {
     http_response_code(400);
 } catch (EntityNotFoundException) {
