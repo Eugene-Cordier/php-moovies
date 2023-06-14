@@ -26,35 +26,41 @@ class MovieForm
 
     public function getHtmlForm(string $action): string
     {
-
         $form="<form name='movie' method='post' action=$action>
-               <label for='id'>id
+               <label for='id'>
                     <input name='id' type='hidden' value='{$this->getMovie()?->getId()}'>
                </label>
-               <label for='posterid'>posterId
-                    <input  name='posterid' type='hidden' value='{$this->escapestring($this->getMovie()?->getPosterId())}'>
+               <label for='posterId'>
+                    <input  name='posterId' type='hidden' value='{$this->getMovie()?->getPosterId()}'>
                </label>
                <label for='originalLanguage'>originalLanguage
                     <input  name='originalLanguage' type='text' value='{$this->escapestring($this->getMovie()?->getOriginalLanguage())}' required>
                </label>
+               <br>
                <label for='originalTitle'>originalTitle
                     <input  name='originalTitle' type='text' value='{$this->escapestring($this->getMovie()?->getOriginalTitle())}' required>
                </label>
+               <br>
                <label for='overview'>overview
                     <input  name='overview' type='text' value='{$this->escapestring($this->getMovie()?->getOverview())}' required>
                </label>
+               <br>
                <label for='releaseDate'>releaseDate
                     <input  name='releaseDate' type='date' value='{$this->escapestring($this->getMovie()?->getReleaseDate())}' required>
                </label>
+               <br>
                <label for='runtime'>runtime
-                    <input  name='runtime' type='number' value='{$this->escapestring($this->getMovie()?->getRuntime())}' required>
+                    <input  name='runtime' type='number' value='{$this->getMovie()?->getRuntime()}' required>
                </label>
+               <br>
                <label for='tagline'>tagline
                     <input  name='tagline' type='text' value='{$this->escapestring($this->getMovie()?->getTagline())}' required>
                </label>
+               <br>
                <label for='title'>title
                     <input  name='title' type='text' value='{$this->escapestring($this->getMovie()?->getTitle())}' required>
                </label>
+               <br>
                <button type='submit'>Enrengistrer</button>
                </form>";
         return $form;
@@ -66,8 +72,8 @@ class MovieForm
         } else {
             $id=null;
         }
-        if (isset($_POST['posterid'])&& ctype_digit($_POST['posterid'])) {
-            $posterid=(int)($_POST['posterid']);
+        if (isset($_POST['posterId'])&& ctype_digit($_POST['posterId'])) {
+            $posterid=(int)($_POST['posterId']);
         } else {
             $posterid=null;
         }

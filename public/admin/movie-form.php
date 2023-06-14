@@ -9,13 +9,13 @@ use Exception\ParameterException;
 use Html\Form\MovieForm;
 
 try {
-    if (!isset($_GET['movieId'])) {
+    if (!isset($_GET['moviesId'])) {
         $movie=null;
     } else {
-        if(!ctype_digit($_GET['movieId'])) {
+        if(!ctype_digit($_GET['moviesId'])) {
             throw new ParameterException("Forme numérique invalide");
         }
-        $movie=Movie::findById((int)$_GET['movieId']);
+        $movie=Movie::findById((int)$_GET['moviesId']);
     }
     $form= new MovieForm($movie);
     echo $form->getHtmlForm('movie-save.php');
