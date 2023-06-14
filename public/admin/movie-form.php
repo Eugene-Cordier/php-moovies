@@ -24,6 +24,9 @@ try {
     $webPage->appendContent(<<<HTML
     <header>Modification & Création de Films</header>
      <div class="content">
+    <form action="../index.php" method="post">
+    <input class='buttonindex' type="submit" name="returnIndex" value="Retour page d'acceuil">
+    </form>
     HTML);
     $webPage->appendContent($form->getHtmlForm('movie-save.php'));
     $webPage->appendContent(<<<HTML
