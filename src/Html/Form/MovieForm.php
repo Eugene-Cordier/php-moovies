@@ -28,31 +28,31 @@ class MovieForm
     {
 
         $form="<form name='movie' method='post' action=$action>
-               <label for='id'>
+               <label for='id'>id
                     <input name='id' type='hidden' value='{$this->getMovie()?->getId()}'>
                </label>
-               <label for='posterid'>
-                    <input  name='posterid' type='number' value='{$this->escapestring($this->getMovie()?->getPosterId())}'>
+               <label for='posterid'>posterId
+                    <input  name='posterid' type='hidden' value='{$this->escapestring($this->getMovie()?->getPosterId())}'>
                </label>
-               <label for='originalLanguage'>
+               <label for='originalLanguage'>originalLanguage
                     <input  name='originalLanguage' type='text' value='{$this->escapestring($this->getMovie()?->getOriginalLanguage())}' required>
                </label>
-               <label for='originalTitle'>
+               <label for='originalTitle'>originalTitle
                     <input  name='originalTitle' type='text' value='{$this->escapestring($this->getMovie()?->getOriginalTitle())}' required>
                </label>
-               <label for='overview'>
+               <label for='overview'>overview
                     <input  name='overview' type='text' value='{$this->escapestring($this->getMovie()?->getOverview())}' required>
                </label>
-               <label for='releaseDate'>
-                    <input  name='releaseDate' type='text' value='{$this->escapestring($this->getMovie()?->getReleaseDate())}' required>
+               <label for='releaseDate'>releaseDate
+                    <input  name='releaseDate' type='date' value='{$this->escapestring($this->getMovie()?->getReleaseDate())}' required>
                </label>
-               <label for='runtime'>
-                    <input  name='runtime' type='text' value='{$this->escapestring($this->getMovie()?->getRuntime())}' required>
+               <label for='runtime'>runtime
+                    <input  name='runtime' type='number' value='{$this->escapestring($this->getMovie()?->getRuntime())}' required>
                </label>
-               <label for='tagline'>
+               <label for='tagline'>tagline
                     <input  name='tagline' type='text' value='{$this->escapestring($this->getMovie()?->getTagline())}' required>
                </label>
-               <label for='title'>
+               <label for='title'>title
                     <input  name='title' type='text' value='{$this->escapestring($this->getMovie()?->getTitle())}' required>
                </label>
                <button type='submit'>Enrengistrer</button>

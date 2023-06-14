@@ -9,7 +9,7 @@ try {
     $movie= new MovieForm();
     $movie->setEntityFromQueryString();
     $movie->getMovie()->save();
-    header("location:../index.php", true, 302);
+    header("location:/", true, 302);
 } catch (ParameterException) {
     http_response_code(400);
 } catch (Exception) {
