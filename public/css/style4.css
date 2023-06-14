@@ -1,0 +1,26 @@
+html,body{
+    margin:0;
+    height:100%;
+}
+header {
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    color:red;
+}
+.content{
+    overflow-y: auto;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../img/imagedefond.jpg");
+}
+form{
+    display: flex;
+    flex-direction: row;
+}
+label {
+    color: white;
+}
+
