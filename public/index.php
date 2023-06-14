@@ -11,7 +11,9 @@ $webPage->appendCssurl('css/style.css');
 $webPage->appendContent(<<<HTML
     <header>Films</header>
     <div class="menu">
-    <a href="admin/movie-form.php">New movie</a>
+    <form action="admin/movie-form.php" method="post">
+    <input type="submit" value="Nouveau Film">
+    </form>
     </div>
     <div class="content">  
 HTML);
