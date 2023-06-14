@@ -8,12 +8,12 @@ use Entity\Exception\EntityNotFoundException;
 use Exception\ParameterException;
 
 try {
-    if(!(isset($_GET['movieId'])) || !(ctype_digit($_GET['movieId']))) {
+    if(!(isset($_GET['moviesId'])) || !(ctype_digit($_GET['moviesId']))) {
         throw new ParameterException("parametre non valide");
     } else {
-        $movie= Movie::findById((int)$_GET['movieId']);
+        $movie= Movie::findById((int)$_GET['moviesId']);
         $movie->delete();
-        header("location:../index.php", true, 302);
+        header("location:/", true, 302);
     }
 } catch (ParameterException) {
     http_response_code(400);
