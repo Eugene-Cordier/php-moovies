@@ -14,12 +14,18 @@ $webPage->appendCssurl("css/style2.css");
 $webPage->appendContent("<header> Films-{$movie->getTitle()}</header>");
 $cover="image.php?ImageId={$movie->getPosterId()}&Type=Movie";
 $webPage->appendContent(<<<HTML
-<div class="content">
-    <div class="form">
-    <form action="index.php" method="post">
+<div class="menu">
+<form action="index.php" method="post">
     <input type="submit" name="returnIndex" value="Retour page d'acceuil">
     </form>
-    </div>
+<form action="admin/movie-form.php?moviesId=$movieId" method="post">
+    <input type="submit" value="Modifier">
+    </form>
+<form action="admin/movie-delete.php?moviesId=$movieId" method="post">
+    <input type="submit" value="Supprimer">
+    </form>
+</div>
+<div class="content">
     <div class="movie">
         <img alt="imagemovie" class="imgmovie" src=$cover>
         <div class="infomovie">
