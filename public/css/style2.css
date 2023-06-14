@@ -41,6 +41,7 @@ body{
     justify-content: space-around;
     margin-left: 15px;
     color:white;
+    flex:1;
 }
 
 .originaltitle{
@@ -95,9 +96,11 @@ a:visited {
     text-decoration: none;
     color: white;
 }
-
-.form{
-    margin-left: 15px;
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 input{
