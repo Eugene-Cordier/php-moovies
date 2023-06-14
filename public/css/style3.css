@@ -81,6 +81,8 @@ a:visited {
 }
 .imgmovie{
     border-radius: 20%;
+    max-width: 120px;
+    max-height: 150px;
     box-shadow: 10px 5px 10px red;
 }
 .form{
