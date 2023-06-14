@@ -13,7 +13,7 @@ try {
     } else {
         $movie= Movie::findById((int)$_GET['movieId']);
         $movie->delete();
-        header("location:../index.php", true,302);
+        header("location:../index.php", true, 302);
     }
 } catch (ParameterException) {
     http_response_code(400);

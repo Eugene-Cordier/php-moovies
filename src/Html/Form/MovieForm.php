@@ -9,7 +9,7 @@ use Entity\Movie;
 use Exception\ParameterException;
 use Html\StringEscaper;
 
-class ArtistForm
+class MovieForm
 {
     use StringEscaper;
     private ?Movie $movie;
