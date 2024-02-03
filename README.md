@@ -4,13 +4,13 @@
 
 # I Configuration du projet
 
-### 1) Configuration du dépot git
+### Configuration du dépot git
 
 le dépôt git contient une branche main protégée.  
 Eugène utilise une autre branche pour commit sur le dépôt.  
 Enzo utilise également une 3ème branche pour commit.  
 Des demandes de merge avec la branche main sont faites par chacun et vérifiée par l'autre.
-### 2) Configuration du dossier de projet
+### Configuration du dossier de projet
 
 - Nous avons configurer notre dossier avec composer et php-cs-fixer.  
   Il y a donc le dossier Vendor, les fichiers composer.lock, composer.json et php-cs-fixer.
@@ -21,7 +21,7 @@ Des demandes de merge avec la branche main sont faites par chacun et vérifiée 
 - Nous avons ajouté un .gitignore contenant les fichiers sensibles comme
   .mypdo.ini qui contient les identifiants pour accéder à la base de données.
 
-### 3) Organisation du dossier de projet
+### Organisation du dossier de projet
 
 - La racine du projet contient les dossiers bin, public, src et les fichiers/dossiers de configuration (Vendor, composer.json, composer.lock, .gitignore, .mypdo.ini, .php-cs-fixer.php et .cache)
 - Le dossier bin contient les scripts de lancement sous Windows (run-server.bat) et Linux (run-server.sh)
@@ -33,9 +33,14 @@ Des demandes de merge avec la branche main sont faites par chacun et vérifiée 
   Le dossier Exception contient les classes permettant de gérer les exceptions et erreurs.  
   Le dossier HTML contient les classes permettant de donner forme aux pages HTML.
 
+### scripts
+
+- start:linux (démarre le serveur sous linux)
+- start:win (démarre le serveur sous window)
+- fix:cs (fixe le code)
 # II Fonctionnalités
 
-### 1) Description
+### Description
 
 Le site est relié à une base de données et permet l'accès à une liste de films et d'acteurs.  
 Le site permet d'effectué des recherches de films filtrées par genre.  
@@ -43,7 +48,7 @@ Le site permet également de connaitre tout les acteurs d'un film, des informati
 Le site permet également de connaître tout les film d'un acteur.  
 le site permet aussi de rajouter, supprimer ou modifier les informations d'un film.
 
-### 2) fonctionnement
+### fonctionnement
 - l'accès à la liste des films se fait dans la page index.php,
   cette dernière contient un menu sous forme de formulaire permettant la recherche filtrée.
   Les informations du formulaire sont récupérer à l'aide d'un $_GET[" "] et
